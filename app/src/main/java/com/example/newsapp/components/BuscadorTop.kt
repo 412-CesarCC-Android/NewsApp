@@ -29,7 +29,7 @@ fun BuscadorTop() {
         },
         trailingIcon = {
             Icon(
-                imageVector = Icons.Default.Home,
+                imageVector = Icons.Default.Search,
                 contentDescription = "Buscar"
             )
         },

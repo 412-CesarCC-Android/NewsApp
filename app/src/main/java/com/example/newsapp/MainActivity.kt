@@ -10,6 +10,10 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -20,11 +24,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.newsapp.components.BuscadorTop
-import com.example.newsapp.components.NewsCardGRande
+import com.example.newsapp.components.NewsCardGrande
+import com.example.newsapp.components.NewsCardGrid
 import com.example.newsapp.components.TabsNoticias
 import com.example.newsapp.models.newsList
 import com.example.newsapp.ui.theme.NewsAppTheme
-import androidx.compose.foundation.lazy.items
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +37,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             NewsAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    PantallasNoticias(innerPadding)
+                    PantallaNoticias(innerPadding)
                 }
             }
         }
@@ -41,14 +45,15 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun PantallasNoticias(innerPadding: PaddingValues) {
+fun PantallaNoticias(innerPadding: PaddingValues) {
     val colors = MaterialTheme.colorScheme
 
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .background(colors.background)
-        .padding(innerPadding)
-        .padding(horizontal = 16.dp)
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(colors.background)
+            .padding(innerPadding)
+            .padding(horizontal = 16.dp)
     ) {
         BuscadorTop()
         TabsNoticias()
@@ -59,9 +64,25 @@ fun PantallasNoticias(innerPadding: PaddingValues) {
             fontSize = 20.sp,
             modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
         )
+
         LazyRow {
-            items(newsList){ news ->
-                NewsCardGRande(news = news)
+            items(newsList) { news ->
+                NewsCardGrande(news = news)
+            }
+        }
+
+        Text(
+            text = "Alrededor del mundo",
+            fontWeight = FontWeight.Bold,
+            fontSize = 20.sp,
+            modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
+        )
+
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2)
+        ) {
+            items(newsList) { news ->
+                NewsCardGrid(news = news)
             }
         }
     }
@@ -71,10 +92,9 @@ fun PantallasNoticias(innerPadding: PaddingValues) {
     showBackground = true,
     showSystemUi = true
 )
-
 @Composable
 fun PantallaNoticiasPreview() {
     NewsAppTheme {
-        PantallasNoticias(innerPadding = PaddingValues(0.dp))
+        PantallaNoticias(innerPadding = PaddingValues(0.dp))
     }
 }

@@ -22,21 +22,15 @@ import coil3.compose.AsyncImage
 import com.example.newsapp.models.News
 
 @Composable
-fun NewsCardGRande(news: News) {
+fun NewsCardGrande(news: News) {
     Box(
         modifier = Modifier
-            .padding(200.dp)
+            .padding(end = 12.dp)
             .width(200.dp)
             .height(160.dp)
             .clip(RoundedCornerShape(16.dp))
+            .background(Color(0xFF7B61FF))
     ) {
-        AsyncImage(
-            model = news.imagen,
-            contentDescription = news.titulo,
-            modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.Crop
-        )
-
         Box(
             modifier = Modifier
                 .fillMaxSize()

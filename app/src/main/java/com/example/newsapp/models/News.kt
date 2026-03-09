@@ -11,7 +11,7 @@ val newsList = listOf(
     News(
         titulo = "El presidente de EE.UU. no muestra sifnos de arrepentimiento.",
         fecha = "febrero 08 - 2024",
-        imagen = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/January_2025_Official_Presidential_Portrait_of_Donald_J._Trump.jpg/250px-January_2025_Official_Presidential_Portrait_of_Donald_J._Trump.jpg"
+        imagen = "https://elordenmundial.com/wp-content/uploads/2024/11/vuelve-donald-trump.jpg"
     ),
     News(
         titulo = "Bañarse en la pscina del desierto de Cleopatra",
